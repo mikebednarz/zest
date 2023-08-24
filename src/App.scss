@@ -1,0 +1,368 @@
+.App {
+  text-align: center;
+}
+
+$input-background: rgba(57, 63, 84, 0.8);
+$input-text-inactive: #7881A1;
+$input-text-active: #BFD2FF;
+
+html { box-sizing: border-box; font-size: 10px; }
+*, *:before, *:after { box-sizing: inherit; }
+body, ul, li  { margin: 0; padding: 0; }
+li { list-style: none; }
+p, h1, h2, h3, h4, h5, h6 { margin-top: 0; }
+a { text-decoration: none; }
+input { border-style: none; background: transparent; outline: none; }
+button { padding: 0; background: none; border: none; outline: none; }
+/* 
+// some basic page styles */
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+  background-image: radial-gradient(circle at 0% 0%, #252736, #252736 100%, #252736);
+}
+
+/* // for demo */
+h1.demo {
+  text-align: center;
+  font-size: 2.4rem;
+  font-weight: normal;
+  margin-bottom: 1rem;
+  color: #f5f6ff;
+}
+a.demo {
+  text-align: center;
+  font-size: 1.6rem;
+  font-weight: normal;
+  color: rgba(202, 205, 239, 0.8);
+  margin-bottom: 3rem;
+}
+.demo-flex-spacer {
+  flex-grow: 1;
+}
+
+/* 
+// colors
+$input-background: rgba(57, 63, 84, 0.8);
+$input-text-inactive: #7881A1;
+$input-text-active: #BFD2FF; */
+
+.header {
+  margin-bottom: 100px;
+  text-align: center;
+  background-image: linear-gradient( 135deg, #9f05ff69 10%, #fd5e086b 100%);
+  padding-bottom: 0.4rem;
+}
+
+.my-recipes-container {
+  margin-bottom: 50px;
+  text-align: center;
+  background-image: linear-gradient( 135deg, #9f05ff69 10%, #fd5e086b 100%);
+  padding-bottom: 0.4rem;
+}
+
+.heading {
+  font-size: 8rem;
+  margin-bottom: -4px;
+  font-family: 'Kaushan Script', cursive;
+  color: #FFF;
+  text-shadow: 1px 1px 1px #333;
+  margin-top: -4px;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  /* //justify-content: center; */
+  height: 100vh;
+  max-width: 1600px;
+  padding: 0 15px;
+  margin: 0 auto;
+}
+.createRecipe {
+  margin-top: -5rem;
+  text-align: center;
+  font-size: 2.4rem;
+  color: #FFF;
+  text-shadow: 1px 1px 1px #333;
+}
+
+.webflow-style-input {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  max-width: 400px;
+  margin: 20px auto;
+  border-radius: 2px;
+  padding: 1.4rem 2rem 1.6rem;
+  background: $input-background;
+  &:after {
+    content: "";
+    position: absolute;
+    left: 0px;
+    right: 0px;
+    bottom: 0px;
+    z-index: 999;
+    height: 2px;
+    border-bottom-left-radius: 2px;
+    border-bottom-right-radius: 2px;
+    background-position: 0% 0%;
+    background: linear-gradient( 135deg, #9f05ff69 10%, #fd5e086b 100%);
+    background-size: 500% auto;
+    /* // animation: gradient 3s linear infinite; */
+  }
+}
+
+.webflow-style-input input {
+  flex-grow: 1;
+  color: #FFF;
+  font-size: 1.8rem;
+  line-height: 2.4rem;
+  vertical-align: middle;
+  &::-webkit-input-placeholder {
+    color: $input-text-inactive;
+  }
+}
+
+.webflow-style-input button {
+  color:  $input-text-inactive;
+  font-size: 2.4rem;
+  line-height: 2.4rem;
+  vertical-align: middle;
+  transition: color .25s;
+  &:hover {
+    color: $input-text-active;
+  }
+}
+
+.buttondiv {
+  text-align: center;
+}
+
+.button {
+  position: relative;
+  font-size: 2rem;
+  display: inline-block;
+  padding: 20px 45px;
+  border-radius: 4px;
+  color: #FFF;
+  text-decoration: none;
+  overflow: hidden;
+  margin: 25px;
+  margin-top: 33px;
+  filter: hue-rotate(0deg);
+  border: 2px solid #9f05ff69;
+  transition: all 0.1s linear;
+  cursor: pointer;
+  &:after {
+    content: "";
+    position: absolute;
+    left: 0px;
+    right: 0px;
+    bottom: 0px;
+    z-index: 999;
+    border-bottom-left-radius: 2px;
+    border-bottom-right-radius: 2px;
+    background-position: 0% 0%;
+    background: linear-gradient(to right, #B294FF, #57E6E6, #FEFFB8, #57E6E6, #B294FF, #57E6E6);
+    background-size: 500% auto;
+    animation: gradient 3s linear infinite;
+  }
+}
+
+.main-header-subtext {
+  color: white;
+  font-size: 18px;
+  margin-bottom: 12px;
+}
+
+.main-header-subtext-2 {
+  color: white;
+  font-size: 17px;
+}
+
+.main-header-subtext-3 {
+  color: white;
+  font-size: 17px;
+  cursor: pointer;
+}
+
+.my-recipes-header {
+  padding-bottom: 14px;
+}
+
+.main-header-subtext-div {
+  padding-bottom: 14px;
+}
+
+.button:active {
+  background-color: $input-background;
+}
+
+// POPUP CARD
+
+.createRecipePopup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.2);
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  z-index: 1000;
+}
+
+.createRecipePopup-inner {
+  position: relative;
+  padding: 32px;
+  padding-top: 28px;
+  padding-bottom: 35px;
+  width: 100%;
+  max-width: 640px;
+  background-color: white;
+  border-radius: 10px;
+  
+}
+
+.createRecipePopup-inner .close-button{
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  cursor: pointer;
+}
+
+.cardSubtitle {
+  font-size: 16px;
+  margin-bottom: 10px;
+  font-weight: bold;
+}
+
+.cardInfo {
+  font-size: 16px;
+  white-space: pre-wrap;
+  white-space: -moz-pre-wrap;
+  white-space: -pre-wrap;
+  white-space: -o-pre-wrap;
+  word-wrap: break-word;
+}
+
+.popupButton {
+  text-align: center;
+  align-items: center;
+  background-color: $input-background;
+  height: 70px;
+  width: 49%;
+  position: relative;
+  font-size: 1.6rem;
+  display: flex;
+  justify-content: space-evenly;
+  border-radius: 4px;
+  color: #FFF;
+  text-decoration: none;
+  overflow: hidden;
+  margin-bottom: 0px;
+  margin-top: 10px;
+  margin-right: 5px;
+  filter: hue-rotate(0deg);
+  border: 2px solid #9f05ff69;
+  transition: all 0.1s linear;
+  cursor: pointer;
+  float: left;
+}
+
+.popupButton:active {
+  opacity: .8;
+}
+
+.enter-name {
+  display: block;
+  text-align: center;
+  background-color: $input-background;
+  width: 99%;
+  height: 70px;
+  color: white;
+  border: 2px solid #9f05ff69;
+  border-radius: 4px;
+  font-size: 1.6rem;
+}
+
+.enter-name::placeholder {
+  color: white;
+  font-size: 1.6rem;
+}
+
+.what-is-your-name {
+  font-size: 16px;
+  margin-bottom: 20px;
+  font-weight: bold;
+}
+
+.recipe-card {
+  background-color: white;
+  width: 30%;
+  margin: auto;
+  font-size: 20px;
+  padding-top: 30px;
+  padding-bottom: 20px;
+  margin-bottom: 20px;
+  border-radius: 20px;
+  border: 2px solid #9f05ff69;
+  padding-left: 10px;
+  padding-right: 6px;
+}
+
+.edit-and-delete-card {
+  display: flex;
+  justify-content: space-between;
+}
+
+.edit-card {
+  flex: .1;
+  color: #9f05ffe8;
+  cursor: pointer;
+}
+
+.delete-card {
+  flex: .1;
+  color: #9f05ffe8;
+  cursor: pointer;
+}
+
+.instructions-box {
+  white-space: pre-wrap;
+  white-space: -moz-pre-wrap;
+  white-space: -pre-wrap;
+  white-space: -o-pre-wrap;
+  word-wrap: break-word;
+  margin-bottom: 15px;
+  margin-top: -4px;
+  color: $input-background;
+}
+
+.recipe-card-subtitles {
+  color: #9f05ffe8;
+}
+
+.ingredients-list {
+  color: $input-background;
+}
+
+.pending-recipes-display {
+  display: inline;
+  background: red;
+  border-radius: 50%;
+  width: 100px;
+  height: 100px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border: 1px solid red;
+  position: relative;
+  top: -10px;
+  left: -7px;
+}
