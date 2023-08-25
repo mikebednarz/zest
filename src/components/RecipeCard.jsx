@@ -1,5 +1,5 @@
 import { useDispatch } from "react-redux";
-import { deleteRecipe, editRecipe } from "../features/Recipes";
+import { deleteRecipe } from "../features/Recipes";
 import { AiFillDelete } from 'react-icons/ai';
 import { FaPencilAlt } from 'react-icons/fa';
 
@@ -11,39 +11,40 @@ const RecipeCard = ({uniqueID, recipeName, ingredients, instructions}) => {
     dispatch(deleteRecipe({ recipeName }));
   };
 
-  const handleEdits = (editID, recipeName, ingredients, instructions, uniqueID) => {
-    if (editID.contentEditable === 'false') {
-      editID.contentEditable = 'true';
-    } else {
-      let ingredientsToArray = '';
+  const handleRecipeEdit = (id, recipeName, ingredients, instructions, uniqueID) => {
+    let ingredientsToArray = '';
 
-      for (let i = 1; i < ingredients.innerHTML.split(`>- `).length; i++) {
-        let string = '';
-        if (i === 1) {
-          for (let j = 0; j < ingredients.innerHTML.split(`>- `)[i].length; j++) {
-            if (ingredients.innerHTML.split(`>- `)[i][j] === '<') {
-              break;
-            } else {
-              string += ingredients.innerHTML.split(`>- `)[i][j];
-            }
+    for (let i = 1; i < ingredients.split(`>- `).length; i++) {
+      let string = '';
+      if (i === 1) {
+        for (let j = 0; j < ingredients.split(`>- `)[i].length; j++) {
+          if (ingredients.split(`>- `)[i][j] === '<') {
+            break;
+          } else {
+            string += ingredients.split(`>- `)[i][j];
           }
-          ingredientsToArray += `${string},`;
-        } else {
-          for (let j = 0; j < ingredients.innerHTML.split(`>- `)[i].length; j++) {
-            if (ingredients.innerHTML.split(`>- `)[i][j] === '<') {
-              break;
-            } else {
-              string += ingredients.innerHTML.split(`>- `)[i][j];
-            }
-          }
-          ingredientsToArray += `${string},`;
         }
-      };
-      const finalIngredients = ingredientsToArray.substring(0, ingredientsToArray.length - 1);
-      dispatch(editRecipe({ id: uniqueID, recipeName: recipeName.innerHTML, ingredients: finalIngredients, instructions: instructions.innerHTML }));
-      editID.contentEditable = 'false';
+        ingredientsToArray += `${string},`;
+      } else {
+        for (let j = 0; j < ingredients.split(`>- `)[i].length; j++) {
+          if (ingredients.split(`>- `)[i][j] === '<') {
+            break;
+          } else {
+            string += ingredients.split(`>- `)[i][j];
+          }
+        }
+        ingredientsToArray += `${string},`;
+      }
     };
-  };
+    const finalIngredients = ingredientsToArray.substring(0, ingredientsToArray.length - 1);
+    const data = {
+      id: uniqueID,
+      recipeName,
+      ingredients: finalIngredients,
+      instructions
+    };
+    window.localStorage.setItem('EDIT_RECIPE', JSON.stringify(data));
+  }
 
   return (
     <div className="recipe-card-container">
@@ -65,9 +66,9 @@ const RecipeCard = ({uniqueID, recipeName, ingredients, instructions}) => {
         <div className="instructions-box">
         <p id={`instructions${recipeName}`}>{instructions}</p>
         </div>
-        {/* <button className="delete-card-button" onClick={() => handleDeleteRecipe(document.getElementById(`recipeName${recipeName}`).innerHTML)}>X</button> */}
         <div className="edit-and-delete-card">
-          <FaPencilAlt className="edit-card" onClick={() => handleEdits(document.getElementById(`recipeCard${recipeName}`), document.getElementById(`recipeName${recipeName}`), document.getElementById(`ingredients${recipeName}`), document.getElementById(`instructions${recipeName}`), uniqueID)}/>
+          <a href="/editcard"><FaPencilAlt className="edit-card" onClick={() => handleRecipeEdit(document.getElementById(`recipeCard${recipeName}`).innerHTML, document.getElementById(`recipeName${recipeName}`).innerHTML, document.getElementById(`ingredients${recipeName}`).innerHTML, document.getElementById(`instructions${recipeName}`).innerHTML, uniqueID)}/></a>
+
           <AiFillDelete className="delete-card" onClick={() => handleDeleteRecipe(document.getElementById(`recipeName${recipeName}`).innerHTML)}/>
         </div>
       </div>

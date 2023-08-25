@@ -12,7 +12,7 @@ const store = configureStore({
   reducer: {
     recipes: recipeReducer,
     username: usernameReducer,
-    pendingRecipes: pendingRecipesReducer
+    pendingRecipes: pendingRecipesReducer,
   }
 });
 

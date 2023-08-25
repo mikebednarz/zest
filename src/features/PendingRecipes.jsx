@@ -4,10 +4,8 @@ const pendingRecipesSlice = createSlice({
   name: "pendingRecipes",
   initialState: { value: 0 },
   reducers: {
-    addPendingRecipe: (state, action) => {
-      console.log(state.value)
+    addPendingRecipe: (state) => {
       state.value++;
-      console.log(state.value)
     }
   }
 });
