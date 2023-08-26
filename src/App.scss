@@ -80,6 +80,7 @@ $input-text-active: #BFD2FF; */
   padding: 0 15px;
   margin: 0 auto;
 }
+
 .createRecipe {
   margin-top: -5rem;
   text-align: center;
@@ -365,4 +366,16 @@ $input-text-active: #BFD2FF; */
   position: relative;
   top: -10px;
   left: -7px;
+}
+
+.dropdowns-container {
+  // border: solid green;
+  text-align: left;
+}
+
+.sort-by {
+  font-size: 1.5rem;
+  color: #FFF;
+  text-shadow: 1px 1px 1px #333;
+  margin-right: 0.5rem;
 }
