@@ -24,7 +24,52 @@ const recipeSlice = createSlice({
       });
       window.localStorage.setItem('RECIPE_STATE', JSON.stringify(state.value));
     }
-  }
+  },
+
+    updateRenderOrderByAdded: (state) => {
+      state.value.sort((a, b) => {
+        const IDA = a.id
+        const IDB = b.id
+
+        if (IDA < IDB) {
+          return - 1;
+        }
+        if (IDA > IDB) {
+          return 1;
+        }
+        return 0;
+      })
+    },
+
+    updateRenderOrderByTitleA: (state) => {
+      state.value.sort((a, b) => {
+        const nameA = a.recipeName.toUpperCase();
+        const nameB = b.recipeName.toUpperCase();
+
+        if (nameA < nameB) {
+          return - 1;
+        }
+        if (nameB > nameA) {
+          return 1;
+        }
+        return 0;
+      })
+    },
+
+    updateRenderOrderByTitleD: (state) => {
+      state.value.sort((a, b) => {
+        const nameA = a.recipeName.toUpperCase();
+        const nameB = b.recipeName.toUpperCase();
+
+        if (nameA > nameB) {
+          return -1;
+        }
+        if (nameB < nameA) {
+          return 1;
+        }
+        return 0;
+      })
+    }
 });
 
 export const { addRecipe, deleteRecipe, editRecipe } = recipeSlice.actions;
