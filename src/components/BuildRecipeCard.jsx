@@ -4,29 +4,10 @@ import CreateRecipePopup from "./CreateRecipePopup";
 const BuildRecipeCard = () => {
   const [cardPopup, setCardPopup] = useState(false);
 
-  const handleOptionChange = () => {
-    const dropdownBox = document.getElementById('dropdown');
-    const selectedOption = dropdownBox?.value;
 
-    if (selectedOption === 'order-added') {
-      // dispatch(updateRenderOrderByAdded())
-    } else if (selectedOption === 'titleA') {
-      // dispatch(updateRenderOrderByTitleA())
-    } else {
-      // dispatch(updateRenderOrderByTitleD())
-    }
-  }
 
   return (
     <div className="container">
-      <div className="dropdowns-container">
-          <span className="sort-by">Sort By</span>
-          <select id='dropdown' onChange={handleOptionChange} className="dropdown">
-            <option value='order-added'>Order Added</option>
-            <option value='titleA'>Title - Ascending</option>
-            <option value='titleD'>Title - Descending</option>
-          </select>
-      </div>
         <h3 className="createRecipe">Build Recipe Card:</h3>
 
       <div className="webflow-style-input">

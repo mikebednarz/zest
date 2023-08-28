@@ -23,8 +23,7 @@ const recipeSlice = createSlice({
         }
       });
       window.localStorage.setItem('RECIPE_STATE', JSON.stringify(state.value));
-    }
-  },
+    },
 
     updateRenderOrderByAdded: (state) => {
       state.value.sort((a, b) => {
@@ -38,7 +37,7 @@ const recipeSlice = createSlice({
           return 1;
         }
         return 0;
-      })
+      });
     },
 
     updateRenderOrderByTitleA: (state) => {
@@ -53,7 +52,7 @@ const recipeSlice = createSlice({
           return 1;
         }
         return 0;
-      })
+      });
     },
 
     updateRenderOrderByTitleD: (state) => {
@@ -68,9 +67,10 @@ const recipeSlice = createSlice({
           return 1;
         }
         return 0;
-      })
+      });
     }
+  }
 });
 
-export const { addRecipe, deleteRecipe, editRecipe } = recipeSlice.actions;
+export const { addRecipe, deleteRecipe, editRecipe, updateRenderOrderByAdded, updateRenderOrderByTitleA, updateRenderOrderByTitleD } = recipeSlice.actions;
 export default recipeSlice.reducer;
