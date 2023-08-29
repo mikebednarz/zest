@@ -23,11 +23,11 @@ const MyRecipesBody = () => {
   return (
     <div>
       <div className="dropdowns-container">
-        <span className="sort-by">Sort By</span>
+        <span className="sort-by">Sort By:</span>
           <select id='dropdown' onChange={() => handleOptionChange()} className="dropdown">
             <option value='order-added'>Order Added</option>
-            <option value='titleA'>Title - Ascending</option>
-            <option value='titleD'>Title - Descending</option>
+            <option value='titleA'>Recipe Name - Ascending</option>
+            <option value='titleD'>Recipe Name - Descending</option>
           </select>
       </div>
       <div>
