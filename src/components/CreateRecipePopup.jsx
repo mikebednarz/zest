@@ -26,6 +26,8 @@ const CreateRecipePopup = (props) => {
         <p className="cardInfo">{document.querySelector(".ingredients").value}</p>
         <p className="cardSubtitle">Instructions:</p>
         <p className="cardInfo">{document.querySelector(".instructions").value}</p>
+        {document.querySelector(".tags").value && <p className='cardSubtitle'>Tags:</p>}
+        {document.querySelector(".tags").value && <p className='cardInfo'>{document.querySelector(".instructions").value}</p>}
         { props.children }
         <span className="popupButton" onClick={() => handleNewRecipe(document.querySelector(".recipeName").value, document.querySelector(".ingredients").value, document.querySelector(".instructions").value)}>
           Save Recipe

@@ -25,6 +25,11 @@ const BuildRecipeCard = () => {
         <button type="submit"><i className="icon ion-android-arrow-forward"></i></button>
       </div>
 
+      <div className="webflow-style-input">
+        <input className="tags" type="text" placeholder="Tags (optional)"></input>
+        <button type="submit"><i className="icon ion-android-arrow-forward"></i></button>
+      </div>
+
       <div className="buttondiv">
         <button className="button" onClick={() => setCardPopup(true)}>
           Create Recipe
