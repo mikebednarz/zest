@@ -7,12 +7,14 @@ import { Provider } from 'react-redux';
 import recipeReducer from './features/Recipes';
 import usernameReducer from './features/Username'
 import pendingRecipesReducer from './features/PendingRecipes';
+import tagsReducer from './features/Tags';
 
 const store = configureStore({
   reducer: {
     recipes: recipeReducer,
     username: usernameReducer,
     pendingRecipes: pendingRecipesReducer,
+    tags: tagsReducer,
   }
 });
 
