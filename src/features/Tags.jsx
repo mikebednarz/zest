@@ -14,9 +14,18 @@ const tagsSlice = createSlice({
         }
       }
       window.localStorage.setItem('TAGS', JSON.stringify(state.value));
+    },
+
+    deleteTags: (state, action) => {
+      const splitTags = action.payload.tags.split(',');
+      for (let i = 0; i < splitTags.length; i++) {
+        const trimmedTag = splitTags[i].trim().toUpperCase();
+        state.value[trimmedTag] -= 1;
+      }
+      window.localStorage.setItem('TAGS', JSON.stringify(state.value));
     }
   }
 });
 
-export const { addTags } = tagsSlice.actions;
+export const { addTags, deleteTags } = tagsSlice.actions;
 export default tagsSlice.reducer;

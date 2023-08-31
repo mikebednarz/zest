@@ -32,7 +32,7 @@ const MyRecipesBody = () => {
       </div>
       <div>
         {recipeList.map((recipe) => {
-          return <RecipeCard key={recipe.id} uniqueID={recipe.id} recipeName={recipe.recipeName} ingredients={recipe.ingredients} instructions={recipe.instructions}/>
+          return <RecipeCard key={recipe.id} uniqueID={recipe.id} recipeName={recipe.recipeName} ingredients={recipe.ingredients} instructions={recipe.instructions} tags={recipe.tags}/>
         })}
       </div>
     </div>

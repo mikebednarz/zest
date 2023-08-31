@@ -3,8 +3,6 @@ import { useSelector } from "react-redux";
 import PendingRecipesDisplay from "./PendingRecipesDisplay";
 import EditNamePopup from "./EditNamePopup";
 
-//TODO: add delete tags functionality when removing a recipe && figure out bug in sorting recipes
-
 const MainHeader = () => {
   const [editNamePopup, setEditNamePopup] = useState(false);
   const username = useSelector((state) => state.username.value);
