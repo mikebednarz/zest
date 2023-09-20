@@ -1,7 +1,8 @@
 import { useState } from "react";
 import CreateRecipePopup from "./CreateRecipePopup";
 
-//TODO: add dropdown bar to display requested recipe tags
+//TODO: add tags on edit recipe page + functionality
+//TODO: add tag sorting functionality
 
 const BuildRecipeCard = () => {
   const [cardPopup, setCardPopup] = useState(false);

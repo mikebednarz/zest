@@ -10,7 +10,7 @@ const RecipeCard = ({uniqueID, recipeName, ingredients, instructions, tags}) => 
 
   const handleDeleteRecipe = (recipeName, tags) => {
     dispatch(deleteRecipe({ recipeName }));
-    dispatch(deleteTags({ tags }))
+    dispatch(deleteTags({ tags }));
   };
 
   const handleRecipeEdit = (id, recipeName, ingredients, instructions, uniqueID) => {
@@ -69,13 +69,14 @@ const RecipeCard = ({uniqueID, recipeName, ingredients, instructions, tags}) => 
         <p id={`instructions${recipeName}`}>{instructions}</p>
         </div>
         <div className="instructions-box">
-          {tags && <p className="recipe-card-subtitles"><strong>Tags:</strong></p>}
-          {tags && <p id={`tags${recipeName}`}>{tags}</p>}
+          {<p className="recipe-card-subtitles"><strong>Tags:</strong></p>}
+          {tags ? <p id={`tags${recipeName}`}>{tags}</p> : <p id={`tags${recipeName}`}>None</p>}
         </div>
         <div className="edit-and-delete-card">
           <a href="/editcard"><FaPencilAlt className="edit-card" onClick={() => handleRecipeEdit(document.getElementById(`recipeCard${recipeName}`).innerHTML, document.getElementById(`recipeName${recipeName}`).innerHTML, document.getElementById(`ingredients${recipeName}`).innerHTML, document.getElementById(`instructions${recipeName}`).innerHTML, uniqueID)}/></a>
 
-          <AiFillDelete className="delete-card" onClick={() => handleDeleteRecipe(document.getElementById(`recipeName${recipeName}`).innerHTML, document.getElementById(`tags${recipeName}`).innerHTML)}/>
+          <AiFillDelete className="delete-card" onClick={() => handleDeleteRecipe(document.getElementById(`recipeName${recipeName}`).innerHTML, document.getElementById(`tags${recipeName}`).innerHTML) 
+          }/>
         </div>
       </div>
     </div>

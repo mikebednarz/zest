@@ -389,3 +389,28 @@ $input-text-active: #BFD2FF; */
   border: none;
   font-size: 1.5rem;
 }
+
+.tags-container {
+  float: right;
+  margin-right: 5rem;
+  background-color: $input-text-active;
+  border-radius: 12px;
+  padding-left: 1rem;
+  position: absolute;
+  right: 5px;
+  top: 229px;
+}
+
+.tags-header {
+  font-size: 1.5rem;
+  margin-right: 0.5rem;
+}
+
+.tags-dropdown {
+  background-color: $input-text-active;
+  border-radius: 12px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  border: none;
+  font-size: 1.5rem;
+}
