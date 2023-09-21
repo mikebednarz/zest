@@ -20,6 +20,7 @@ const recipeSlice = createSlice({
           recipe.recipeName = action.payload.recipeName;
           recipe.ingredients = action.payload.ingredients;
           recipe.instructions = action.payload.instructions;
+          recipe.tags = action.payload.tags;
         }
       });
       window.localStorage.setItem('RECIPE_STATE', JSON.stringify(state.value));

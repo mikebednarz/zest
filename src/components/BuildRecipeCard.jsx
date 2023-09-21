@@ -1,7 +1,6 @@
 import { useState } from "react";
 import CreateRecipePopup from "./CreateRecipePopup";
 
-//TODO: add tags on edit recipe page + functionality
 //TODO: add tag sorting functionality
 
 const BuildRecipeCard = () => {

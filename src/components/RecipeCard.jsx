@@ -13,7 +13,7 @@ const RecipeCard = ({uniqueID, recipeName, ingredients, instructions, tags}) => 
     dispatch(deleteTags({ tags }));
   };
 
-  const handleRecipeEdit = (id, recipeName, ingredients, instructions, uniqueID) => {
+  const handleRecipeEdit = (id, recipeName, ingredients, instructions, tags, uniqueID) => {
     let ingredientsToArray = '';
 
     for (let i = 1; i < ingredients.split(`>- `).length; i++) {
@@ -43,7 +43,8 @@ const RecipeCard = ({uniqueID, recipeName, ingredients, instructions, tags}) => 
       id: uniqueID,
       recipeName,
       ingredients: finalIngredients,
-      instructions
+      instructions,
+      tags
     };
     window.localStorage.setItem('EDIT_RECIPE', JSON.stringify(data));
   }
@@ -73,7 +74,7 @@ const RecipeCard = ({uniqueID, recipeName, ingredients, instructions, tags}) => 
           {tags ? <p id={`tags${recipeName}`}>{tags}</p> : <p id={`tags${recipeName}`}>None</p>}
         </div>
         <div className="edit-and-delete-card">
-          <a href="/editcard"><FaPencilAlt className="edit-card" onClick={() => handleRecipeEdit(document.getElementById(`recipeCard${recipeName}`).innerHTML, document.getElementById(`recipeName${recipeName}`).innerHTML, document.getElementById(`ingredients${recipeName}`).innerHTML, document.getElementById(`instructions${recipeName}`).innerHTML, uniqueID)}/></a>
+          <a href="/editcard"><FaPencilAlt className="edit-card" onClick={() => handleRecipeEdit(document.getElementById(`recipeCard${recipeName}`).innerHTML, document.getElementById(`recipeName${recipeName}`).innerHTML, document.getElementById(`ingredients${recipeName}`).innerHTML, document.getElementById(`instructions${recipeName}`).innerHTML, document.getElementById(`tags${recipeName}`).innerHTML, uniqueID)}/></a>
 
           <AiFillDelete className="delete-card" onClick={() => handleDeleteRecipe(document.getElementById(`recipeName${recipeName}`).innerHTML, document.getElementById(`tags${recipeName}`).innerHTML) 
           }/>

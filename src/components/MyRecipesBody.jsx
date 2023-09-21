@@ -5,7 +5,7 @@ import { useDispatch } from "react-redux";
 
 const MyRecipesBody = () => {
   const recipeList = useSelector(((state) => state.recipes.value));
-  const tagsList = useSelector(((state) => state.tags.value))
+  const tagsList = useSelector(((state) => state.tags.value));
   const dispatch = useDispatch();
 
   const handleOptionChange = () => {
@@ -39,6 +39,7 @@ const MyRecipesBody = () => {
       <div className="tags-container">
         <span className="tags-header">Tags:</span>
           <select id='tags-dropdown' className="tags-dropdown">
+            <option id='tags-dropdown' className="tags-dropdown">All Recipes</option>
               {Object.values(tagsList).map((value, i) => {
                 return value > 0 && Object.keys(tagsList)[i] && <option>{Object.keys(tagsList)[i]}{` (${value})`}</option>
               })}
