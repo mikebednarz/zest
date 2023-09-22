@@ -26,8 +26,6 @@ const EditCardBody = () => {
     const removeTags = [];
 
     for (let i = 0; i < originalTags.split(',').length; i++) {
-      console.log('originalTags:', originalTags)
-      console.log('splitTags:', splitTags)
       let deleteTag = true;
       for (let j = 0; j < splitTags.length; j++) {
         if (originalTags.split(',')[i] === splitTags[j]) {
@@ -38,7 +36,6 @@ const EditCardBody = () => {
         removeTags.push(originalTags.split(',')[i].trim());
       }
     }
-    console.log('removeTags:', removeTags)
     if (removeTags.length > 0) {
       dispatch(removeTagsAfterEdit({ removeTags }));
     }
@@ -46,7 +43,7 @@ const EditCardBody = () => {
     dispatch(editRecipe({ id, recipeName, ingredients, instructions, tags }));
     document.getElementById('save-edits').style.color === 'green' ? document.getElementById('save-edits').style.color = 'grey' : document.getElementById('save-edits').style.color = 'green';
 
-    
+
   }
 
   return (
