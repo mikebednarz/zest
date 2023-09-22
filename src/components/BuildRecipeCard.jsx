@@ -1,6 +1,7 @@
 import { useState } from "react";
 import CreateRecipePopup from "./CreateRecipePopup";
 
+//TODO: add functionality for removing tags upon edit
 //TODO: add tag sorting functionality
 
 const BuildRecipeCard = () => {

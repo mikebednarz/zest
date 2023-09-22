@@ -69,9 +69,26 @@ const recipeSlice = createSlice({
         }
         return 0;
       });
+    },
+
+    tagRenderChange: (state, action) => {
+      if (action.payload.info === 'all') {
+        state.value.forEach((recipe) => {
+          recipe.display = true;
+        });
+      } else {
+        state.value.forEach((recipe) => {
+          recipe.display = false;
+          const splitTags = recipe.tags.split(',');
+          for (let i = 0; i < splitTags.length; i++) {
+            const trimmedTag = splitTags[i].trim().toLowerCase();
+            if (action.payload.info === trimmedTag) recipe.display = true;
+          }
+        });
+      }
     }
   }
 });
 
-export const { addRecipe, deleteRecipe, editRecipe, updateRenderOrderByAdded, updateRenderOrderByTitleA, updateRenderOrderByTitleD } = recipeSlice.actions;
+export const { addRecipe, deleteRecipe, editRecipe, updateRenderOrderByAdded, updateRenderOrderByTitleA, updateRenderOrderByTitleD, tagRenderChange } = recipeSlice.actions;
 export default recipeSlice.reducer;

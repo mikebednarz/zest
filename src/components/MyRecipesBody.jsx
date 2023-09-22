@@ -1,6 +1,6 @@
 import RecipeCard from "./RecipeCard";
 import { useSelector } from "react-redux";
-import { updateRenderOrderByAdded, updateRenderOrderByTitleA, updateRenderOrderByTitleD } from "../features/Recipes";
+import { updateRenderOrderByAdded, updateRenderOrderByTitleA, updateRenderOrderByTitleD, tagRenderChange } from "../features/Recipes";
 import { useDispatch } from "react-redux";
 
 const MyRecipesBody = () => {
@@ -21,6 +21,17 @@ const MyRecipesBody = () => {
     }
   };
 
+  const handleTagRenderChange = () => {
+    const dropdownBox = document.getElementById('tags-dropdown');
+    const selectedOption = dropdownBox.value;
+    const selectedTag = selectedOption.slice(0, -3).trim().toLowerCase();
+    if (selectedOption === 'all-recipes') {
+      dispatch(tagRenderChange({ info: 'all' }));
+    } else {
+      dispatch(tagRenderChange({ info: selectedTag }));
+    }
+  }
+
   return (
     <div>
       <div className="dropdowns-container">
@@ -33,15 +44,15 @@ const MyRecipesBody = () => {
       </div>
       <div>
         {recipeList.map((recipe) => {
-          return <RecipeCard key={recipe.id} uniqueID={recipe.id} recipeName={recipe.recipeName} ingredients={recipe.ingredients} instructions={recipe.instructions} tags={recipe.tags}/>
+          return recipe.display === true && <RecipeCard key={recipe.id} uniqueID={recipe.id} recipeName={recipe.recipeName} ingredients={recipe.ingredients} instructions={recipe.instructions} tags={recipe.tags}/>
         })}
       </div>
       <div className="tags-container">
         <span className="tags-header">Tags:</span>
-          <select id='tags-dropdown' className="tags-dropdown">
-            <option id='tags-dropdown' className="tags-dropdown">All Recipes</option>
+          <select id='tags-dropdown' className="tags-dropdown" onChange={() => handleTagRenderChange()}>
+            <option id='tags-dropdown-option' className="tags-dropdown-option" value='all-recipes'>All Recipes</option>
               {Object.values(tagsList).map((value, i) => {
-                return value > 0 && Object.keys(tagsList)[i] && <option>{Object.keys(tagsList)[i]}{` (${value})`}</option>
+                return value > 0 && Object.keys(tagsList)[i] && <option id={`${Object.keys(tagsList)[i]}`}>{Object.keys(tagsList)[i]}{` (${value})`}</option>
               })}
           </select>
       </div>

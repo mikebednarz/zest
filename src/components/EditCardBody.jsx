@@ -1,6 +1,6 @@
 import { AiFillCheckCircle } from 'react-icons/ai';
 import { editRecipe } from '../features/Recipes';
-import { addTags } from '../features/Tags';
+import { addTags, removeTagsAfterEdit } from '../features/Tags';
 import { useDispatch } from 'react-redux';
 
 const EditCardBody = () => {
@@ -23,8 +23,30 @@ const EditCardBody = () => {
 
     dispatch(addTags({ tags: newTags }));
 
+    const removeTags = [];
+
+    for (let i = 0; i < originalTags.split(',').length; i++) {
+      console.log('originalTags:', originalTags)
+      console.log('splitTags:', splitTags)
+      let deleteTag = true;
+      for (let j = 0; j < splitTags.length; j++) {
+        if (originalTags.split(',')[i] === splitTags[j]) {
+          deleteTag = false;
+        }
+      }
+      if (deleteTag === true) {
+        removeTags.push(originalTags.split(',')[i].trim());
+      }
+    }
+    console.log('removeTags:', removeTags)
+    if (removeTags.length > 0) {
+      dispatch(removeTagsAfterEdit({ removeTags }));
+    }
+
     dispatch(editRecipe({ id, recipeName, ingredients, instructions, tags }));
     document.getElementById('save-edits').style.color === 'green' ? document.getElementById('save-edits').style.color = 'grey' : document.getElementById('save-edits').style.color = 'green';
+
+    
   }
 
   return (

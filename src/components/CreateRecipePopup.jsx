@@ -10,6 +10,7 @@ const CreateRecipePopup = (props) => {
   const handleNewRecipe = (recipeName, ingredients, instructions, tags) => {
       dispatch(addRecipe({
         id: recipeList.length > 0 ? recipeList[recipeList.length - 1].id + 1 : 0,
+        display: true,
         recipeName,
         ingredients,
         instructions,
