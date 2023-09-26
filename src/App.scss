@@ -390,6 +390,10 @@ $input-text-active: #BFD2FF; */
   font-size: 1.5rem;
 }
 
+.dropdown:focus {
+  outline-width: 0;
+}
+
 .tags-container {
   float: right;
   margin-right: 5rem;
@@ -413,4 +417,8 @@ $input-text-active: #BFD2FF; */
   padding-bottom: 5px;
   border: none;
   font-size: 1.5rem;
+}
+
+.tags-dropdown:focus {
+  outline-width: 0;
 }

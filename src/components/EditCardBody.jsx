@@ -42,8 +42,6 @@ const EditCardBody = () => {
 
     dispatch(editRecipe({ id, recipeName, ingredients, instructions, tags }));
     document.getElementById('save-edits').style.color === 'green' ? document.getElementById('save-edits').style.color = 'grey' : document.getElementById('save-edits').style.color = 'green';
-
-
   }
 
   return (
